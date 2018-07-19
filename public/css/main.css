@@ -1,0 +1,33 @@
+.page-header{
+    float:left;
+    width:100%;
+    margin: 10px 0px;
+}
+
+.page-header-left{
+    float: left;
+    width:50%;
+}
+
+.page-header-right{
+    float: left;
+    width:50%;
+    text-align: right;
+}
+
+.page-body{
+    float:left;
+    width:100%;
+    text-align: center;
+}
+
+.page-body-left{
+    float: left;
+    width:29%;
+    border-right:1px solid #000000;
+}
+
+.page-body-right{
+    float: left;
+    width:70%;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<hr>
+
+
+
+<div class="container">
+    <div class="header clearfix">
+        <nav>
+            <ul class="nav nav-pills float-right">
+                <li class="nav-item">
+                    <button type="button" class="btn btn-link" ng-click="vm.doLogout()">Logout!</button>
+                </li>
+            </ul>
+        </nav>
+        <h3 class="text">Welcome {{vm.user.username}}</h3>
+    </div>
+
+<div class="clearfix"></div>
+<br/>
+    <form name="uploadForm" enctype="multipart/form-data" ng-submit="vm.uploadFile()">
+        <div class="form-group">
+            <input type="file" ng-file="vm.setFile($files)" id="file"  required class="form-control-file"><br/>
+            <input type="submit" name="submit" value="Upload File" class="btn">
+        </div>
+    </form>
+    <p style="color:red" ng-repeat="fileUploadError in vm.fileUploadErrors">{{fileUploadError}}</p>
+
+
+<div class="clearfix"></div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Already Uploaded files:</h4>
+        <p style="color:red" ng-hide="vm.files.length">You have not uploaded any files.</p>
+        <table class="table" ng-hide="!vm.files.length">
+            <thead>
+            <tr>
+                <th>File name</th>
+                <th>Type</th>
+                <th>Size</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="file in vm.files">
+                <td>{{ file.filename }}</td>
+                <td>{{ file.type }}</td>
+                <td>{{ vm.getFileSize(file.size) }}</td>
+                <td>
+                    <button ng-click="vm.downloadFile(file)" class="btn btn-success btn-xs">Download</button>
+                    <button ng-click="vm.renameFile(file)" class="btn btn-primary btn-xs">Rename</button>
+                    <button ng-click="vm.deleteFile(file)" class="btn btn-danger btn-xs">Delete</button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col-md-4 col-md-offset-4">
+        <h2>Signup</h2>
+        <p>Welcome to the FIe Upload App. Singup to get started</p>
+
+        <hr>
+
+        <form name="signupForm" ng-submit="vm.doSignup()">
+            <div class="form-group">
+                <input type="text" name="username" placeholder="Enter Username" ng-model="vm.username" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="email" name="email" placeholder="Enter Email Address" ng-model="vm.email" required class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="password" name="password" minlength="6" placeholder="Enter Password" ng-model="vm.password"  required class="form-control">
+                <div ng-if="vm.passValidateError">
+                    <p style="color:red; margin-top: 17px">Password must fulfill atleast 2 of 4 criterias:</p>
+                    <ul>
+                        <li>Lowercase Letter</li>
+                        <li>Uppercase Letter</li>
+                        <li>Number</li>
+                        <li>Special Character</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="color:red" ng-repeat="signupError in vm.signupErrors">{{signupError}}</p>
+            <input type="submit" name="submit" value="Signup" class="btn btn-success">
+
+        </form>
+
+        <hr>
+
+        <p><a href="/login">Already signed up? <b>Log in!</b></a></p>
+    </div>
+</div>
