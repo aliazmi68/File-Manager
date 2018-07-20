@@ -45,7 +45,7 @@ class FileController extends Controller
 
     public function destroy($id)
     {
-        $file = base_path() .'/public/file_uploads/' . $id;
+        $file = base_path() .'/storage/file_uploads/' . $id;
 
         if(is_file($file)){
             //  Deleting file from local storage
