@@ -24,7 +24,7 @@ Route::group(
     Route::get('auth/getLoggedInUser', 'AuthController@getLoggedInUser');
 
 //  File Related Routes
-    Route::get('file/download', 'FileController@downloadFile');
+    Route::get('file/download/{id}', 'FileController@downloadFile')->where('id', '^[^/]+$');
     Route::resource('file', 'FileController');
 
 //  User Related Routes

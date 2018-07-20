@@ -148,7 +148,7 @@ app.controller("FileController", function($scope, appService, $window, $http){
 
     //  Function to download file
     vm.downloadFile = function(file){
-        window.open('/file/download?name='+file.filename+'&type='+file.type+'&id='+file.id);
+        window.open('/file/download/'+file.id);
     }
 
     //  Function to delete file

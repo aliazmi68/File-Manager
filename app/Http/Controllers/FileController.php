@@ -38,7 +38,7 @@ class FileController extends Controller
             'size' => $request->file('file')->getClientSize()
         ]);
 
-        $request->file('file')->move(__DIR__ . '/../../../public/file_uploads/', $file->id . '.' . $file->type);
+        $request->file('file')->move(__DIR__ . '/../../../storage/file_uploads/', $file->id . '.' . $file->type);
 
         return response()->json(['errors' => [], 'files' => File::where('user_id', Auth::user()->id)->get(), 'status' => 200], 200);
     }
@@ -71,15 +71,13 @@ class FileController extends Controller
 
     }
 
-    public function downloadFile(Request $request)
+    public function downloadFile($id)
     {
-        $file= base_path() .'/public/file_uploads/' . $request->input('id').'.'.$request->input('type');
+	$file = File::find($id);
+        $filepath= base_path() .'/storage/file_uploads/' . $id.'.'.$file->type;
 
-        $headers = [
-            'Content-Type' => 'application/pdf',
-        ];
 
-        return response()->download($file, $request->input('name'), $headers);
+        return response()->download($filepath, $file->filename, [], 'attachment');
     }
 
 }
