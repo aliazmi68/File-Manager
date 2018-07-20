@@ -229,15 +229,17 @@ app.controller("FileController", function($scope, appService, $window, $http){
 
     //  Function to list user files
     function listFiles() {
+        vm.loader = true;
         vm.header = {
             'Content-Type': undefined
         }
 
         appService.callAPI('GET', '/file', {}, vm.header)
             .then(function success(response) {
+                vm.loader = false;
                 vm.files = response.data.files;
             }, function error(response) {
-
+                vm.loader = false;
             });
     };
 });
