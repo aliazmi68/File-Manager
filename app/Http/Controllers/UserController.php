@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use Validator;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -59,8 +60,20 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
+        $user->status = 0;
+        $user->activation_code = str_random(32);
 
         if($user->save()){
+            $data = [
+                'username' => $user->username,
+                'email' => $user->email,
+                'activation_code' => $user->activation_code,
+            ];
+
+            Mail::send(['text'=> 'mail'],$data, function($message){
+                $message->to(env('EMAIL_TO'), 'To Admin')->subject('Activate User');
+                $message->from(env('EMAIL_FROM'), 'File Upload App');
+            });
             Auth::login($user);
             return response($user, 200);
         }

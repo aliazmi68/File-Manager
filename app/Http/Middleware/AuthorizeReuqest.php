@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Http\Request;
 
 class AuthorizeReuqest
 {
@@ -15,11 +16,9 @@ class AuthorizeReuqest
      */
     public function handle($request, Closure $next)
     {
-        dd($request->getHttpHost());
-
-//        if(strpos(Request::capture()->root(), env('APP_API_URL'))){
-//            return response('Unauthorized', 401);
-//        }
+        if(strpos(Request::capture()->root(), env('AUTHORIZED_URL')) === false){
+            return response('Unauthorized', 401);
+        }
 
         return $next($request);
     }

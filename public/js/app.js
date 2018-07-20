@@ -16,6 +16,11 @@ fileUploadApp.config(['$routeProvider', '$locationProvider', function($routeProv
         controller: 'UserController',
         controllerAs: 'vm'
     }).
+    when('/welcome', {
+        templateUrl: '../partials/welcome.html',
+        controller: 'UserController',
+        controllerAs: 'vm'
+    }).
     when('/', {
         templateUrl: '../partials/index.html',
         controller: 'FileController',

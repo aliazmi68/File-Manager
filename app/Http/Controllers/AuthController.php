@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\User;
 
 class AuthController extends Controller
 {
@@ -29,9 +30,16 @@ class AuthController extends Controller
         return response('User Logged out', 200);
     }
 
-
     public function getLoggedInUser()
     {
         return response(Auth::user(), 200);
+    }
+
+    public function activate($code)
+    {
+        User::where('activation_code', $code)
+            ->update(['status' => 1]);
+
+        return view('index');
     }
 }

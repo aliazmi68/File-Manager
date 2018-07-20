@@ -30,8 +30,10 @@ Route::group(
 //  User Related Routes
     Route::resource('user', 'UserController');
 
-    Route::get('*', function() {
-        return view('index');
-    });
+});
 
+Route::get('/activate/{code}', 'AuthController@activate');
+
+Route::get('*', function() {
+    return view('index');
 });
