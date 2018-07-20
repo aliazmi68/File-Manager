@@ -148,7 +148,18 @@ app.controller("FileController", function($scope, appService, $window, $http){
 
     //  Function to download file
     vm.downloadFile = function(file){
-        window.open('/file/download/'+file.id);
+        vm.data = {
+            user_id: vm.user.id,
+            file_id: file.id
+        };
+        appService.callAPI('POST', '/file/getDownloadLink', vm.data, {})
+            .then(function success(response) {
+                 vm.loader = false;
+                window.open('/file/download/'+response.data.link);
+            }, function error(response) {
+
+            });
+        // window.open('/file/download/'+file.id);
     }
 
     //  Function to delete file
