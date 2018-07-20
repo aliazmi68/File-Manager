@@ -60,7 +60,7 @@ class UserController extends Controller
         $user->username = $request->username;
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
-        $user->status = 0;
+        $user->status = 1;
 //        $user->activation_code = str_random(32);
 
         if($user->save()){
