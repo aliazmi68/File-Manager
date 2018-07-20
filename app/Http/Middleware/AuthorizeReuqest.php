@@ -16,7 +16,7 @@ class AuthorizeReuqest
      */
     public function handle($request, Closure $next)
     {
-        if(strpos(Request::capture()->root(), env('AUTHORIZED_URL')) === false){
+    if(strpos(Request::capture()->root(), "http://probearbeit.sunzity.de") === false){
             return response('Unauthorized', 401);
         }
 

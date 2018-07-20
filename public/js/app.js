@@ -7,22 +7,22 @@ fileUploadApp.config(['$routeProvider', '$locationProvider', function($routeProv
 
     $routeProvider.
     when('/login', {
-        templateUrl: '../partials/login.html',
+        templateUrl: '../webcloud/public/partials/login.html',
         controller: 'UserController',
         controllerAs: 'vm'
     }).
     when('/signup', {
-        templateUrl: '../partials/signup.html',
+        templateUrl: '../webcloud/public/partials/signup.html',
         controller: 'UserController',
         controllerAs: 'vm'
     }).
     when('/welcome', {
-        templateUrl: '../partials/welcome.html',
+        templateUrl: '../webcloud/public/partials/welcome.html',
         controller: 'UserController',
         controllerAs: 'vm'
     }).
     when('/', {
-        templateUrl: '../partials/index.html',
+        templateUrl: '../webcloud/public/partials/index.html',
         controller: 'FileController',
         controllerAs: 'vm'
     }).

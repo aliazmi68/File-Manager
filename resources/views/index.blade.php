@@ -8,15 +8,15 @@
 
         <title>File Uploading Application</title>
 
-        <link href="bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-        <script src="bower_components/jquery/dist/jquery.min.js"></script>
-        <script src="bower_components/angular/angular.min.js"></script>
-        <script src="bower_components/angular-route/angular-route.min.js"></script>
-        <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
-        <script src="bower_components/restangular/dist/restangular.min.js"></script>
-        <script src="js/app.js"></script>
-        <script src="js/MainController.js"></script>
-        <script src="js/services.js"></script>
+        <link href="webcloud/public/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+        <script src="webcloud/public/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="webcloud/public/bower_components/angular/angular.min.js"></script>
+        <script src="webcloud/public/bower_components/angular-route/angular-route.min.js"></script>
+        <script src="webcloud/public/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+        <script src="webcloud/public/bower_components/restangular/dist/restangular.min.js"></script>
+        <script src="webcloud/public/js/app.js"></script>
+        <script src="webcloud/public/js/MainController.js"></script>
+        <script src="webcloud/public/js/services.js"></script>
 
     </head>
 
@@ -31,6 +31,6 @@
         </div>
 
 
-        <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <script src="webcloud/public/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     </body>
 </html>

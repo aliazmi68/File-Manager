@@ -71,8 +71,8 @@ class UserController extends Controller
             ];
 
             Mail::send(['text'=> 'mail'],$data, function($message){
-                $message->to(env('EMAIL_TO'), 'To Admin')->subject('Activate User');
-                $message->from(env('EMAIL_FROM'), 'File Upload App');
+                $message->to('aliazmi68@gmail.com', 'To Admin')->subject('Activate User');
+                $message->from('from@test.com', 'File Upload App');
             });
             Auth::login($user);
             return response($user, 200);

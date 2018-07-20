@@ -135,7 +135,6 @@ app.controller("FileController", function($scope, appService, $window, $http){
 
                 });
 
-                // alert("Image has been uploaded successfully!");
             }, function error(response) {
                 vm.loader = false;
                 vm.fileUploadErrors = response.data.errors;
@@ -207,10 +206,10 @@ app.controller("FileController", function($scope, appService, $window, $http){
             .then(function(response){
                 vm.loader = false;
                 vm.user = (response.data);
-                if(typeof vm.user.id == 'undefined' || !vm.user.id>0){
+                if(typeof vm.user.id == 'undefined' || !vm.user.id>0 || angular.equals(vm.user, {})){
                     $window.location = '/login';
                 }
-                if(!vm.user.status){
+                if(!vm.user.status && !isEmpty(vm.user)){
                     vm.loader = false;
                     $window.location = '/welcome';
                 }
