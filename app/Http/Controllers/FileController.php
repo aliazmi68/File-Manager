@@ -75,8 +75,8 @@ class FileController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'fileID' => 'required|unique:files',
-            'userID' => 'required|unique:users',
+            'fileID' => 'required|exist:files',
+            'userID' => 'required|exist:users',
         ]);
 
         if ($validator->fails()) {
