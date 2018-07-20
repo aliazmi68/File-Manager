@@ -155,7 +155,7 @@ app.controller("FileController", function($scope, appService, $window, $http){
         appService.callAPI('POST', '/file/getDownloadLink', vm.data, {})
             .then(function success(response) {
                  vm.loader = false;
-                window.open('/file/download/'+response.data.link);
+		 window.open('/file/download/'+response.data.link+'/'+file.id);
             }, function error(response) {
 
             });

@@ -73,17 +73,6 @@ class FileController extends Controller
 
     public function getDownloadLink(Request $request)
     {
-
-        $validator = Validator::make($request->all(), [
-            'fileID' => 'required|exist:files',
-            'userID' => 'required|exist:users',
-        ]);
-
-        if ($validator->fails()) {
-
-            return response()->json(['status' => 400], 400);
-        }
-
         $rand = str_random(16);
         $linkData=[
             'link' => $rand,
@@ -97,14 +86,13 @@ class FileController extends Controller
         return response()->json(['link' => $rand, 'status' => 200]);
     }
 
-    public function downloadFile($link)
+    public function downloadFile($link, $id)
     {
         $download_link = DB::table('download_links')->where('link', $link)->get();
-
-        if(!$download_link->status){
-            $file = File::find($download_link->file_id);
-            $filepath= base_path() .'/storage/file_uploads/' . $download_link->file_id.'.'.$file->type;
-
+        if(!$download_link[0]->status && $download_link[0]->file_id==$id){
+            $file = File::find($id);
+            $filepath= base_path() .'/storage/file_uploads/' . $id.'.'.$file->type;
+	    DB::table('download_links')->where('link', $link)->update(['status' => 1]);
             return response()->download($filepath, $file->filename, [], 'attachment');
         } else{
             return response()->json(['status' => 400], 400);

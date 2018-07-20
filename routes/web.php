@@ -25,7 +25,7 @@ Route::group(
 
 //  File Related Routes
     Route::post('/file/getDownloadLink', 'FileController@getDownloadLink');
-    Route::get('file/download/{link}', 'FileController@downloadFile');
+    Route::get('file/download/{link}/{id}', 'FileController@downloadFile');
     Route::resource('file', 'FileController');
 
 //  User Related Routes
