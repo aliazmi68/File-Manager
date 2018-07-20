@@ -238,6 +238,7 @@ app.controller("FileController", function($scope, appService, $window, $http){
             .then(function success(response) {
                 vm.loader = false;
                 vm.files = response.data.files;
+                vm.loader = false;
             }, function error(response) {
                 vm.loader = false;
             });
