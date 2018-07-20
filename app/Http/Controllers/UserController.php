@@ -61,19 +61,19 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = bcrypt($request->password);
         $user->status = 0;
-        $user->activation_code = str_random(32);
+//        $user->activation_code = str_random(32);
 
         if($user->save()){
             $data = [
                 'username' => $user->username,
                 'email' => $user->email,
-                'activation_code' => $user->activation_code,
+//                'activation_code' => $user->activation_code,
             ];
 
-            Mail::send(['text'=> 'mail'],$data, function($message){
-                $message->to('aliazmi68@gmail.com', 'To Admin')->subject('Activate User');
-                $message->from('from@test.com', 'File Upload App');
-            });
+//            Mail::send(['text'=> 'mail'],$data, function($message){
+//                $message->to('aliazmi68@gmail.com', 'To Admin')->subject('Activate User');
+//                $message->from('from@test.com', 'File Upload App');
+//            });
             Auth::login($user);
             return response($user, 200);
         }

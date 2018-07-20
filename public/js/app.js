@@ -16,11 +16,11 @@ fileUploadApp.config(['$routeProvider', '$locationProvider', function($routeProv
         controller: 'UserController',
         controllerAs: 'vm'
     }).
-    when('/welcome', {
-        templateUrl: '../webcloud/public/partials/welcome.html',
-        controller: 'UserController',
-        controllerAs: 'vm'
-    }).
+    // when('/welcome', {
+    //     templateUrl: '../webcloud/public/partials/welcome.html',
+    //     controller: 'UserController',
+    //     controllerAs: 'vm'
+    // }).
     when('/', {
         templateUrl: '../webcloud/public/partials/index.html',
         controller: 'FileController',

@@ -23,8 +23,8 @@ app.controller("UserController", function($scope, appService, $window, $location
             appService.callAPI('POST', '/user', vm.data, {})
                 .then(function(response){
                     vm.user = (response.data);
-                    if(vm.user.id>0 && !vm.user.status){
-                        $window.location = '/welcome';
+                    if(vm.user.id>0){
+                        $window.location = '/';
                     }
                 }, function(response){
                     vm.signupErrors = response.data.errors;
@@ -209,10 +209,10 @@ app.controller("FileController", function($scope, appService, $window, $http){
                 if(typeof vm.user.id == 'undefined' || !vm.user.id>0 || angular.equals(vm.user, {})){
                     $window.location = '/login';
                 }
-                if(!vm.user.status && !isEmpty(vm.user)){
-                    vm.loader = false;
-                    $window.location = '/welcome';
-                }
+                // if(!vm.user.status && !isEmpty(vm.user)){
+                //     vm.loader = false;
+                //     $window.location = '/welcome';
+                // }
             }, function(response){});
     }
 
